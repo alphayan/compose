@@ -5,7 +5,19 @@ services:
     ports:
     - "3306:3306"
     - "33060:33060"
+    volumes:
+    - ~/data/mysql:/var/lib/mysql  
     environment: 
+      MYSQL_ROOT_PASSWORD: root123456
+    restart: unless-stopped
+  mysql57:
+    image: mysql:5.7
+    ports:
+    - "3307:3306"
+    - "33070:33060"
+    volumes:
+    - ~/data/mysql57:/var/lib/mysql
+    environment:
       MYSQL_ROOT_PASSWORD: root123456
     restart: unless-stopped
   redis:
@@ -13,6 +25,8 @@ services:
     ports:
     - "6379:6379"
     restart: unless-stopped
+    volumes:
+    - ~/data/redis:/data        
   mongo:
     image: mongo
     environment:
@@ -24,6 +38,8 @@ services:
     - "27019:27019"
     - "28017:28017"
     restart: unless-stopped
+    volumes:
+    - ~/data/mongo:/data/db       
   nats:
     image: nats
     ports:
@@ -38,6 +54,8 @@ services:
     environment:
       POSTGRES_PASSWORD: root123456
     restart: unless-stopped
+    volumes:
+    - ~/data/postgresql:/var/lib/postgresql/data        
   influxdb:
     image: influxdb
     ports:
@@ -48,6 +66,8 @@ services:
       INFLUXDB_ADMIN_USER: root
       INFLUXDB_ADMIN_PASSWORD: root123456
     restart: unless-stopped
+    volumes:
+    - ~/data/influxdb:/var/lib/influxdb        
   minio:
     image: minio/minio
     restart: unless-stopped
@@ -58,4 +78,12 @@ services:
       MINIO_SECRET_KEY: minio123456
     command: server /data
     volumes:
-    - ~/minio:/data    
+    - ~/data/minio:/data
+  gitea:
+    image: gitea/gitea
+    restart: unless-stopped
+    ports: 
+    - "10022:22"
+    - "10080:3000"
+    volumes:
+    - ~/data/gitea:/data
