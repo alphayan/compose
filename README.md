@@ -9,5 +9,6 @@
 ###influxdb
 ###gitea
 ###
+更新 docker-compose pull
 启动 docker-compose up -d     
 停止 docker-compose down
