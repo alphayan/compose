@@ -2,6 +2,11 @@
 github.com/go-sql-driver/mysql
 # github.com/go-xorm/xorm v0.7.9
 github.com/go-xorm/xorm
+# github.com/influxdata/influxdb1-client v0.0.0-20190809212627-fc22c7df067e
+github.com/influxdata/influxdb1-client
+github.com/influxdata/influxdb1-client/models
+github.com/influxdata/influxdb1-client/pkg/escape
+github.com/influxdata/influxdb1-client/v2
 # github.com/jinzhu/gorm v1.9.11
 github.com/jinzhu/gorm
 github.com/jinzhu/gorm/dialects/mysql
